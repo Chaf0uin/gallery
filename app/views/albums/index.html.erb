@@ -1,0 +1,20 @@
+<h1>Tous les albums</h1>
+
+<%= link_to 'Nouvel album', new_album_path, class: "btn btn-primary" %>
+<p></p>
+
+<% @albums.each do |album| %>
+  <div class="album_container" id="album_<%= album.id %>">
+    <% if album.photos.first %>
+      <%= link_to image_tag(album.photos.first.image.url, class:"album"), album_path(album) %>
+    <% else %>
+      Aucune image
+    <% end %>
+    <div class="caption">
+      <p style="text-align: center;">
+        <%= album.name.truncate(14) %>
+      </p>
+    </div>
+  </div>
+<% end %>  
+
