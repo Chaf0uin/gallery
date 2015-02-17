@@ -15,7 +15,7 @@ module Api
       		end
       
       		def show
-        		respond_with Album.find(params[:id])
+            respond_with Album.find(params[:id]).photos
       		end
       
       		def create

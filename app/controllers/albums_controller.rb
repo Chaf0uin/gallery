@@ -1,54 +1,56 @@
 class AlbumsController < ApplicationController
 
+  before_action :authenticate_user!
+
 	def index
-    	@albums = Album.all
-  	end
+   	@albums = Album.all
+  end
 
 	def show
-    	@album = Album.find(params[:id])
-    	@photos = @album.photos
-  	end
+    @album = Album.find(params[:id])
+    @photos = @album.photos
+  end
 
 	def new
 		@album = Album.new
-  	end
+  end
 
 
-  	def edit
-  		@album = Album.find(params[:id])
+  def edit
+  	@album = Album.find(params[:id])
 	end
 
  	def create
-  		@album = Album.new(album_params)
+  	@album = Album.new(album_params)
  
-  		if @album.save
+  	if @album.save
 
-        if params[:images]
-          params[:images].each { |image|
-            @album.photos.create(image: image)
-          }
-        end
+      if params[:images]
+        params[:images].each { |image|
+          @album.photos.create(image: image)
+        }
+      end
 
-  			redirect_to @album
-  		else
-  			render 'new'
-  		end		
-  	end  	
+  		redirect_to @album
+  	else
+  		render 'new'
+  	end		
+  end  	
 
   
 	def update
-  		@album = Album.find(params[:id])
+  	@album = Album.find(params[:id])
  
  		if @album.update_attributes(album_params)
-      		if params[:images]
-        		params[:images].each { |image|
-        			@album.photos.create(image: image)
-        		}
-        end    
+    	if params[:images]
+     		params[:images].each { |image|
+     			@album.photos.create(image: image)
+     		}
+      end    
     		redirect_to @album
-  		else
-    		render 'edit'
-  		end
+  	else
+    	render 'edit'
+  	end
 	end
 
 

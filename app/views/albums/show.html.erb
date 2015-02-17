@@ -1,10 +1,14 @@
+<%= javascript_include_tag 'albums', 'data-turbolinks-track' => true %>
+
 <h1><%= @album.name %></h1>
 <input type="hidden" id="albumID" value="<%= @album.id %>">
 
-<p>
-  <b>Description: </b><br />
-  <%= @album.description %>
-</p>
+<%if @album.description.present? %>
+  <p>
+    <b>Description: </b><br />
+    <%= @album.description %>
+  </p>
+<% end %>  
 
 <%= link_to 'Retour', albums_path, :class => 'btn btn-default'  %>
 <%= link_to 'Editer album', edit_album_path(@album), :class => 'btn btn-primary' %>
@@ -12,23 +16,33 @@
 <br />
 
 
+<div id="photo_div">
 <% unless @photos.empty? %>
   <% @photos.each do |pic| %>
-    <div class="album_container">
-      <%= image_tag pic.image.url, :class => "photo" %>
-      <div class="caption">
-        <p style="text-align: center;">
-          <%= link_to "Editer", photo_path(pic), :class => 'btn btn-primary btn-xs' %>
-          <%= link_to "Supprimer", pic,
-            :data => { :confirm => "Are you sure?" },
-            :method => :delete,
-            :class => "btn btn-danger btn-xs"
-          %>
-        </p>
-      </div>
-    </div>
+    <a href="javascript:void(0)">
+        <%= image_tag pic.image.url, :class => "photo_image", :id => pic.id  %>
+    </a>
   <% end %>
 <% end %>
+</div>
+
+<div id="zoom_area">
+  <p class="glyphicon glyphicon-remove" id="zoom_close"></p>
+  
+  <div id="zoom_image">
+    <img id="zoom" /> 
+  </div>
+  <div id="zoom_comments">
+    <ul id="comment_list">
+
+    </ul>
+  </div> 
+ </div> 
+
+
+<div id="previous"><p class="glyphicon glyphicon-chevron-left"></p></div>
+<div id="next"><p class="glyphicon glyphicon-chevron-right"></p></div>
+
 
 
 

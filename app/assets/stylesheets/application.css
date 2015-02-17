@@ -14,6 +14,24 @@
  *= require_self
  */
 
+ @font-face {
+  font-family: '/assets/glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#/assets/glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: '/assets/glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
  .album_container {
  	height: 250px;
  	display: inline-block;
@@ -27,12 +45,158 @@
 
 
 .photo_container {
- 	height: 250px;
+ 	height: 200px;
  	display: inline-block;
- 	margin: 5px;
+ 	margin: 2px;
 
  }
 
 .photo {
  	height: 200px;
 }
+
+
+#zoom:empty {
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#previous {
+	display: none;
+	font-size: 60px;
+	height: 95px;
+	width: 70px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 104px; 
+	position: fixed;
+	top: 40%;
+	left: 45px;
+	color: white;
+	background-color: #2780E3;
+} 
+
+#next {
+	display: none;
+	font-size: 60px;
+	height: 95px;
+	width: 70px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 110px; 
+	position: fixed;
+	top: 40%;
+	right: 45px;
+	background-color: #2780E3 ;
+	color: white;
+}
+
+#photo_area {
+	margin-top: 50px;
+	width: 100%;
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-bottom: 20px;
+}
+
+#photo_image {
+	width: calc(100% - 300px);
+	height: 100%;
+	display: inline-block;
+}
+
+#image {
+	width: 100%;
+
+}
+
+#photo_comments {
+	width: 280px;
+	display: inline-block;
+	height: 100%;
+	float: right;
+
+}
+
+#comment_list {
+	list-style-type: none;
+	padding:0; 
+	margin:0;
+	margin-bottom: 10px;
+}
+
+#zoom_area {
+	position: fixed;
+	width: 80%;
+	height: 80%;
+	top: 10%;
+	left: 10%;
+	border-radius: 3px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+	background-color: white;
+	display: none;
+}
+
+#zoom_image {
+	position:absolute;
+	width: calc(100% - 300px);
+	height: 100%;
+	display: inline-block;
+	background-color: black;
+}
+
+#zoom_comments {
+	width: 280px;
+	display: inline-block;
+	height: 100%;
+	float: right;
+	background-color: white;
+	overflow: auto;
+	padding-top: 10px;
+}
+
+#zoom {
+	max-width: 100%;
+	max-height: 100%;
+	position:absolute;
+   	left:50%;
+   	top:50%;
+}
+
+#zoom_close {
+	font-size: 20px;
+	position: absolute;
+	top: 7px;
+	right: 7px;
+}
+
+.custom-large-title{
+  font-size: 4em;
+  font-style: normal;
+}
+
+
+#progress_upload {
+	font-size: 35px;
+	display:none;
+	border: 1px solid black;
+	height: 100px;
+	width: 40%;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+	position: fixed;
+	top: 40%;
+	left: 30%;
+	background-color: white;
+}
+
+
+
+

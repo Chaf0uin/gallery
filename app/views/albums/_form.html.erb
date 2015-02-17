@@ -15,18 +15,24 @@
   <div class="control-group">
     <%= f.label :photos, :class => 'control-label' %>
     <div class="controls">
-      <%= file_field_tag "images[]", type: :file, multiple: true %>
+      <%= file_field_tag "images[]", type: :file, multiple: true, :class => 'btn btn-primary'  %>
     </div>
   </div>
 
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                albums_path(), :class => 'btn btn-default' %>
+  <br />
 
-    <%= link_to "Supprimer l'album", @album,
-                  :data => { :confirm => "Etes-vous sûr ?" },
+    <%= f.submit "Sauvergarder", :class => 'btn btn-primary', :id => 'save_album', :onclick => "console.log('lalal'); document.getElementById('progress_upload').style.display = 'block'; console.log('lalal');" %>
+    <%= link_to "Annuler", albums_path(), :class => 'btn btn-default' %>
+
+    <%= link_to "Supprimer", @album,
+                  :data => { :confirm => "Etes-vous sûr de vouloir supprimer cet album ?" },
                   :method => :delete, 
                   :class => 'btn btn-danger'
 
-                %>            
+                %>    
+
+
+  <div id="progress_upload">
+    Chargement...
+  </div>                      
 <% end %>

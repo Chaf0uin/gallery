@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  authenticated :user do
+    root :to => "albums#index", :as => "authenticated_root"
+  end
+
+  devise_for :users
+
 	namespace :api, defaults: {format: 'json'} do
     	namespace :v1 do
       		resources :albums
@@ -7,8 +13,11 @@ Rails.application.routes.draw do
     	end
   	end
 
-  	resources :albums 
-  	resources :photos
+  resources :users, only: [:show]
+  resources :albums 
+  resources :photos do
+    resources :comments
+  end
 
-  	root :to => 'albums#index'
+  root :to => 'welcome#index'
 end
